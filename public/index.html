@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入頁</title>
+    <link rel="stylesheet" href="./scripts/styles/login.css">
+</head>
+<body>
+    <div id="container">
+        <div id="loginbar">
+            <span>聊天室登入</span>
+            <div>
+                <img src="./login.png" alt="avatar">
+                <div>
+                    <i>請輸入名稱</i> 
+                </div>
+                <input type="text" id="uname"><br><br>
+            </div>
+            <button id="btn">登入</button>
+        </div>
+
+    </div>
+
+    <script>
+        btn.onclick = function(){
+            let user = uname.value
+            let avatar = Math.floor(Math.random()*100) + '.jpg'
+            sessionStorage.setItem('avatar',avatar)
+            location.href = `/chat.html?uname=${user}&avatar=${avatar}`
+        }
+
+        
+
+    </script>
+</body>
+</html>

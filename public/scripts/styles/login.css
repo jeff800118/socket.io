@@ -1,0 +1,56 @@
+*{
+    background-image: url(../../loginbackground.png);
+    background-size: cover;
+    color:white;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    width: 250px;
+    height:330px;
+    margin: auto;
+    padding: 0;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    text-align: center;
+    /* background-color: rgb(224, 241, 241); */
+    margin-top:300px;
+}
+
+#loginbar span:first-child{
+    font-size: 48px;
+    width: 250px;
+    box-sizing: border-box;
+    font-weight: bolder;
+}
+
+#loginbar i{
+    font-size: 20px;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+
+#loginbar input{
+    width:180px;
+    box-sizing: border-box;
+    color: lawngreen;
+}
+
+#loginbar img{
+    width:120px;
+    height: 120px;
+}
+
+#loginbar button:hover{
+    cursor: pointer;
+    width: 45px;
+    height: 35px;
+    box-shadow: 0 0 5px 2px ;
+}
+

@@ -1,0 +1,122 @@
+
+*{
+    background-image: url(../../loginbackground.png);
+    background-size: cover;
+    color: white;
+    background-position: center;
+    background-attachment: fixed;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+}
+
+/* 整體容器 */
+#container{
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 500px;
+
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 10%;
+}
+
+
+/* 聊天室名稱 */
+#main {
+    margin:0px;
+    /* text-align: center; */
+    border:1px solid blue;
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+}
+
+.main-avatar img{
+    width:40px;
+    height:40px;
+    text-align: end;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+#logout{
+    padding-left: 10px;   
+}
+
+
+#topic{
+    font-size: 30px;
+}
+
+#msgbox{
+    height: 400px;
+    position: relative;
+    /* overflow-Y: auto;   */
+    /* overflow-x:hidden; */
+    overflow: auto;
+    
+}
+
+.user-face ,.user-face h4{
+    display:flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.user-face h4{
+    border-radius: 5%;
+    padding: 6px;
+}
+
+.user-msg{
+    color:red;
+    font-size: 20px;
+    margin-left: 10px;
+    padding-top: 15px;
+    word-break: break-all;
+}
+
+
+.chat-item img{
+    margin-top: 20px;
+    width:40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+
+
+#chatbar{  
+    width: 500px;
+    height: px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#chatbar input{
+    margin: 0 auto;
+    padding: 0;
+    width: 450px;
+    color:hotpink;
+}
+
+#btn{
+    cursor: pointer;
+    width: 50px;
+    color:white;
+    font-size: 16px;
+    font-weight: bolder;
+    border: 1px solid red;
+}
+
+#chatbar button:hover{
+    box-shadow: 0 0  8px 2px lawngreen;
+    width: 55px;
+}
+
+#main,#msgbox,#message,#btn{
+    border: 1px solid aqua;
+}
+

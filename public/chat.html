@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天室</title>
+    <link rel="stylesheet" href="./scripts/styles/chat.css">
+</head>
+<script src="./scripts/socket.io.min.js"></script>
+<!-- <script src="../node_modules/socket.io/client-dist/socket.io.min.js"></script> -->
+<body>
+    <div id="container">
+        <div id="main">
+            <div id="topic">聊天室(在線<span id="userNumber"></span>人)</div>
+        </div>
+        <div id="msgbox"></div>
+        <div id="chatbar">
+            <input type="text" id="message">
+            <button id="btn">發送</button>
+        </div>
+    </div>
+
+<script>
+    let div = document.createElement('div')
+    div.className = "main-avatar"
+    div.innerHTML = `
+        <div>
+            <img src="./avatar/${sessionStorage.getItem('avatar')}" alt="" id="avatar">
+            <a href='/' id="logout">登出</a>
+        </div>  
+    `
+    document.getElementById('main').appendChild(div)
+    // console.log(sessionStorage.getItem('avatar'))
+    
+    let querystr = location.search.substr(1)
+    let params = querystr.split('&')
+    // console.log(params)
+    let username = params[0].split('=')[1]
+    let avatar = params[1].split('=')[1]
+    console.log(username,avatar)
+
+    let $avatar = document.getElementById('avatar')
+    $avatar.innerHTML = `public/avatar/${avatar}`
+    // 1、連接server
+    let socket = io('ws://localhost:3000/')
+    // 2、發送消息給server
+    btn.addEventListener('click',()=>{
+        // 得到用戶輸入的內容
+        let msg = document.getElementById('message').value
+        if(msg.trim()){
+            socket.emit('newMessage',{
+                msg:msg,
+                username:username,
+                avatar:avatar
+            })
+        }
+    })
+
+    // 3、監聽服務器的消息
+    socket.on('newMessage',(data)=>{
+        console.log(data)
+        let div = document.createElement('div')
+        div.className= "chat-item"
+        div.innerHTML = `
+            <div class="user-face">
+                <img src="avatar/${data.avatar}" />
+                <h4>${data.username} :</h4>
+            </div>
+            <div class="user-msg">${data.msg}</div>
+        `
+        let chatDiv = document.getElementById('msgbox') 
+        chatDiv.appendChild(div)
+        chatDiv.scrollTop = chatDiv.scrollHeight
+        document.getElementById('message').value = ""
+
+        
+    })
+    
+    // 4、監聽server更新聊天室人數數據
+
+    socket.on('countUpdate',(count) => {
+        console.log('當前有'+ count +'人')
+        document.getElementById('userNumber').innerHTML = count
+    })
+    socket.on('disconnect',(count) => {
+        console.log('當期有' + count + '人')
+        document.getElementById('userumber').innerHTML = count
+    })
+
+    
+</script>
+    
+</body>
+</html>
